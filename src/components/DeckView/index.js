@@ -7,12 +7,11 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 20,
+    justifyContent: 'center',
   },
   title: {
     fontSize: 30,
     fontWeight: '700',
-    marginTop: 30,
     paddingVertical: 15,
   },
   subTitle: {

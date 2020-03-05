@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 // import DeckView from './src/components/DeckForm';
-import DeckView from './src/components/CardForm';
+import DeckView from './src/components/DeckView';
 import Constants from 'expo-constants';
 
 const instructions = Platform.select({
@@ -14,7 +14,6 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <DeckView />
-
       </View>
     );
   }
