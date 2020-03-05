@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, SafeAreaView, Keyboard, KeyboardAvoidingView } from 'react-native';
 import Title from '../Title';
-import UdaButton from '../UdaButton';
+import UdaButton from '../form/UdaButton';
 import { ErrorIcon } from "../icons";
 
 const style = StyleSheet.create({

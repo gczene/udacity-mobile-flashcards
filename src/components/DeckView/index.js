@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
-import UdaButton from '../UdaButton';
+import UdaButton from '../form/UdaButton';
 import Title from '../Title';
 
 const style = StyleSheet.create({
