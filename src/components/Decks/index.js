@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import DeckList from './DeckList';
+import Title from '../Title';
 
 const style = StyleSheet.create({
   container: {
@@ -8,9 +9,6 @@ const style = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
   },
-  title: {
-    fontSize: 36,
-  }
 })
 
 const data = [{
@@ -23,7 +21,7 @@ const data = [{
 export default () => {
   return (
     <View style={style.container}>
-      <Text style={style.title}>Decks</Text>
+      <Title>Decks</Title>
 
       <DeckList questions={data} />
     </View>

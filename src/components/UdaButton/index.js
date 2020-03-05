@@ -22,13 +22,13 @@ const btnStyle = StyleSheet.create({
   },
 });
 
-export default ({text = 'no text passed', secondary, style = {}, children}) => {
+export default ({text = 'no text passed', secondary, style = {}, children, onPress = () => {}}) => {
   const predefinedStyle = secondary ? btnStyle.secondary : btnStyle.primary;
 
   const styles = [btnStyle.btn, predefinedStyle, style];
 
   return (
-    <TouchableOpacity style={styles}>
+    <TouchableOpacity style={styles} onPress={onPress}>
       <Text style={btnStyle.text}>{children}</Text>
     </TouchableOpacity>
   );

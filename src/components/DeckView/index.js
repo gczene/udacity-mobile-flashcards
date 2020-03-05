@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import UdaButton from '../UdaButton';
+import Title from '../Title';
 
 const style = StyleSheet.create({
   container: {
@@ -27,7 +28,7 @@ export default ({card = initialCard}) => {
   const { title, questions } = initialCard;
   return (
     <View style={style.container}>
-      <Text style={style.title}>{title}</Text>
+      <Title>{title}</Title>
       <Text style={style.subTitle}>{questions.length} cards</Text>
       <View>
         <UdaButton>Add card</UdaButton>
