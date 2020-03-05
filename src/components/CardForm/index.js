@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import {Text, StyleSheet, View, KeyboardAvoidingView, SafeAreaView} from 'react-native';
 import Title from '../Title';
 import Input from '../form/Input';
 import UdaButton from '../form/UdaButton';
 import ErrorMessage from '../form/ErrorMessage';
 
 const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+  },
   label: {
     marginVertical: 10,
     fontSize: 18,
@@ -35,7 +39,8 @@ export default ({question: defaultQuestion, answer: defaultAnswer, onSubmit = ()
     }
   }
   return (
-    <View>
+    <KeyboardAvoidingView style={style.container} behavior={Platform.OS === "ios" ? "padding" : null}>
+      <SafeAreaView>
       <Title>Edit Card</Title>
       <View>
         <Text style={style.label}>Question</Text>
@@ -54,6 +59,7 @@ export default ({question: defaultQuestion, answer: defaultAnswer, onSubmit = ()
       <View>
         <UdaButton onPress={submit}>Submit</UdaButton>
       </View>
-    </View>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   )
 };

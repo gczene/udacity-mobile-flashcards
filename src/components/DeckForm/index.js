@@ -2,39 +2,18 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, SafeAreaView, Keyboard, KeyboardAvoidingView } from 'react-native';
 import Title from '../Title';
 import UdaButton from '../form/UdaButton';
-import { ErrorIcon } from "../icons";
+import Input from '../form/Input';
+import ErrorMessage from '../form/ErrorMessage';
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingTop: 50,
   },
-  btnContainer: {
-    paddingTop: 25,
-  },
-  errorView: {
-    flexDirection: 'row',
-    margin: 15,
-    padding: 15,
-    backgroundColor: '#961F41',
-  },
-  errorText: {
-    paddingLeft: 15,
-    flex: 1,
-    alignSelf: 'center',
-    color: 'white',
+  inputWrapper: {
+    marginVertical: 15,
   }
 })
 
-const ErrorView = () => {
-  return (
-    <View style={style.errorView}>
-      <ErrorIcon color={'white'} />
-      <Text style={style.errorText}>Min 3 characters!</Text>
-    </View>
-  );
-}
 export default ({onSubmit = () => {}}) => {
 
   const [ title, setTitle ] = useState('');
@@ -49,17 +28,18 @@ export default ({onSubmit = () => {}}) => {
     Keyboard.dismiss();
   }
   return (
-    <KeyboardAvoidingView style={style.btnContainer} behavior={Platform.OS === "ios" ? "padding" : null}>
-      <SafeAreaView style={style.container}>
+    <KeyboardAvoidingView style={style.container} behavior={Platform.OS === "ios" ? "padding" : null}>
+      <SafeAreaView >
+
         <Title>What is the title of your new deck?</Title>
-        <View>
-          <TextInput
+        <View style={style.inputWrapper}>
+          <Input
             style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
             onChangeText={text => setTitle(text)}
             value={title}
           />
         </View>
-        {hasError && <ErrorView />}
+        {hasError && <ErrorMessage>Min 3 characters!</ErrorMessage>}
         <UdaButton onPress={submit}>Submit</UdaButton>
       </SafeAreaView>
     </KeyboardAvoidingView>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+// import DeckView from './src/components/DeckForm';
 import DeckView from './src/components/CardForm';
 import Constants from 'expo-constants';
 
@@ -22,8 +23,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    alignItems: 'center',
     backgroundColor: '#FFF4DA',
     marginTop: Constants.statusBarHeight,
     padding: 10,
