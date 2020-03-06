@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, SafeAreaView, Keyboard, KeyboardAvoidingView } from 'react-native';
+import { View, StyleSheet, SafeAreaView, Keyboard, KeyboardAvoidingView } from 'react-native';
 import Title from '../Title';
 import UdaButton from '../form/UdaButton';
 import Input from '../form/Input';

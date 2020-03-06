@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 // import DeckView from './src/components/DeckForm';
-import DeckView from './src/components/DeckView';
+// import DeckView from './src/components/DeckView';
+import DeckView from './src/components/CardView';
 import Constants from 'expo-constants';
 
 const instructions = Platform.select({
@@ -22,7 +23,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
     backgroundColor: '#FFF4DA',
     marginTop: Constants.statusBarHeight,
     padding: 10,
