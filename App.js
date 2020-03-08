@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import DeckForm from './src/components/DeckForm';
-// import DeckView from './src/components/DeckView';
+import DeckView from './src/components/DeckView';
 import Decks from './src/components/Decks';
 import { pink, dark } from './src/colors';
+import { Provider } from 'react-redux';
+import store from './src/store';
 
-import DeckView from './src/components/CardView';
+// import DeckView from './src/components/CardView';
 import Constants from 'expo-constants';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -22,7 +24,8 @@ const Tab = createBottomTabNavigator();
 const Home = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Homer" component={Decks} />
+      <Stack.Screen name="Home" component={Decks} options={{ title: 'Overview' }} />
+      <Stack.Screen name="DeckView" component={DeckView} />
     </Stack.Navigator>
   )
 }
@@ -36,14 +39,16 @@ export default class App extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Tab.Navigator
-          tabBarOptions={{
-          activeTintColor: pink,
-          inactiveTintColor: dark,
-        }}>
-          <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="New Deck" component={DeckForm} />
-        </Tab.Navigator>
+        <Provider store={store}>
+          <Tab.Navigator
+            tabBarOptions={{
+            activeTintColor: pink,
+            inactiveTintColor: dark,
+          }}>
+            <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="New Deck" component={DeckForm} />
+          </Tab.Navigator>
+        </Provider>
       </NavigationContainer>
     );
   }

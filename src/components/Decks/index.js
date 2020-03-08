@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import DeckList from './DeckList';
 import Title from '../Title';
 import { yellow } from '../../colors';
+import { connect } from 'react-redux';
 
 const style = StyleSheet.create({
   container: {
@@ -19,12 +20,25 @@ const data = [{
   title: 'Bye',
   numberOfCards: 2
 }]
-export default () => {
+const Decks = ({decks, onPress}) => {
   return (
     <View style={[style.container]}>
       <Title>Decks</Title>
-
-      <DeckList questions={data} />
+      <DeckList decks={decks} onPress={onPress} />
     </View>
   )
-}
+};
+
+const mapDispatchToProps = (dispatch, { navigation }) => {
+  return {
+    onPress: (deck) => navigation.navigate('DeckView', { deck })
+  };
+};
+
+const mapStateToProps = ({ decks }) => {
+
+  return {
+    decks: Object.keys(decks).map(id => decks[id])
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Decks);

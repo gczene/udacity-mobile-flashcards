@@ -23,8 +23,9 @@ const initialCard = {
   title: '',
   questions: []
 }
-export default ({card = initialCard}) => {
-  const { title, questions } = initialCard;
+export default ({route}) => {
+  console.log('route', route)
+  const { title, questions } = route.params.deck;
   return (
     <View style={style.container}>
       <Title>{title}</Title>

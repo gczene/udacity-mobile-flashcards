@@ -19,13 +19,13 @@ const style = StyleSheet.create({
   }
 })
 
-export default ({ title, numberOfCards, onPress = () => {} }) => {
+export default ({ deck, numberOfCards, onPress = () => {} }) => {
 
-  const press = () => onPress({title});
+  const press = () => onPress(deck);
 
   return (
     <TouchableOpacity style={style.item} onPress={press}>
-      <Text style={style.title}>{title}</Text>
+      <Text style={style.title}>{deck.title}</Text>
       <Text style={style.num}>{numberOfCards} cards</Text>
     </TouchableOpacity>
   )

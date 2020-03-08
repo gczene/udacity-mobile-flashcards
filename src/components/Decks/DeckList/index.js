@@ -2,14 +2,14 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import Item from '../DeckItem';
 
-export default ({ questions }) => {
+export default ({ decks, onPress }) => {
   return (
     <FlatList
       style={{width: '90%'}}
-      data={questions}
+      data={decks}
       renderItem={({item}) => {
         return (
-          <Item title={item.title} numberOfCards={item.numberOfCards}/>
+          <Item deck={item} onPress={onPress} numberOfCards={item.questions.length}/>
         )
       }
     }
