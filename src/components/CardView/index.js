@@ -15,7 +15,7 @@ const style = StyleSheet.create({
   btnWrapper: {
     paddingBottom: 200,
   },
-  subTitile: {
+  subTitle: {
     color: pink,
     fontWeight: 'bold',
     paddingTop: 30,
@@ -35,7 +35,7 @@ export default () => {
           {!isAnswerDisplayed && 'QUESTION QUESTION QUESTION QUESTION QUESTION QUESTION QUESTION '}
         </Title>
         <TouchableOpacity onPress={() => setIsAnswerDisplayed(!isAnswerDisplayed)}>
-          <Text style={style.subTitile}>
+          <Text style={style.subTitle}>
             {isAnswerDisplayed && 'QUESTION'}
             {!isAnswerDisplayed && 'Answer'}
           </Text>
