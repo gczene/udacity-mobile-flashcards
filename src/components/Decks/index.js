@@ -2,12 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import DeckList from './DeckList';
 import Title from '../Title';
+import { yellow } from '../../colors';
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    borderWidth: 1,
+    backgroundColor: yellow,
   },
 })
 
@@ -20,7 +21,7 @@ const data = [{
 }]
 export default () => {
   return (
-    <View style={style.container}>
+    <View style={[style.container]}>
       <Title>Decks</Title>
 
       <DeckList questions={data} />
