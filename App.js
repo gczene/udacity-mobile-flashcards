@@ -13,6 +13,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Results from './src/components/Results';
+import Preloader from './src/components/Preloader';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,39 +52,41 @@ export default class App extends Component {
     return (
       <NavigationContainer>
         <Provider store={store}>
-          <Tab.Navigator
-            tabBarOptions={{
-              activeTintColor: 'white',
-              inactiveTintColor: '#FEC94B',
-              tabStyle: {
-                // justifyContent: 'center',
-              },
-              labelStyle: {
-                // fontSize: 20,
-                fontWeight: 'bold',
-              },
-              style: {
-                paddingTop: 0,
-                borderWidth: 1,
-                borderColor: 'green',
-                backgroundColor: '#F5AC33'
-              }
-            }}>
-            <Tab.Screen
-              name="Home"
-              component={Home}
-              options={{
-                tabBarIcon: ({color}) => <FontAwesome name="home" size={25} color={color} />
-              }}
-            />
-            <Tab.Screen
-              name="New Deck"
-              component={DeckForm}
-              options={{
-                tabBarIcon: ({color}) => <FontAwesome name="plus-square" size={25} color={color} />
-              }}
-            />
-          </Tab.Navigator>
+          <Preloader>
+            <Tab.Navigator
+              tabBarOptions={{
+                activeTintColor: 'white',
+                inactiveTintColor: '#FEC94B',
+                tabStyle: {
+                  // justifyContent: 'center',
+                },
+                labelStyle: {
+                  // fontSize: 20,
+                  fontWeight: 'bold',
+                },
+                style: {
+                  paddingTop: 0,
+                  borderWidth: 1,
+                  borderColor: 'green',
+                  backgroundColor: '#F5AC33'
+                }
+              }}>
+              <Tab.Screen
+                name="Home"
+                component={Home}
+                options={{
+                  tabBarIcon: ({color}) => <FontAwesome name="home" size={25} color={color} />
+                }}
+              />
+              <Tab.Screen
+                name="New Deck"
+                component={DeckForm}
+                options={{
+                  tabBarIcon: ({color}) => <FontAwesome name="plus-square" size={25} color={color} />
+                }}
+              />
+            </Tab.Navigator>
+          </Preloader>
         </Provider>
       </NavigationContainer>
     );

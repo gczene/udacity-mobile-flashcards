@@ -1,4 +1,4 @@
-import { ADD_DECK, ADD_CARD, DELETE_DECK } from "../actions";
+import {ADD_DECK, ADD_CARD, DELETE_DECK, INIT_STORE} from "../actions";
 
 const initialState = {
   React: {
@@ -27,6 +27,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case INIT_STORE:
+      return action.decks;
     case ADD_DECK:
       return {
         ...state,
