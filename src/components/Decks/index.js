@@ -4,6 +4,7 @@ import DeckList from './DeckList';
 import Title from '../Title';
 import { yellow } from '../../colors';
 import { connect } from 'react-redux';
+import Empty from './Empty';
 
 const style = StyleSheet.create({
   container: {
@@ -12,23 +13,16 @@ const style = StyleSheet.create({
     padding: 15,
     backgroundColor: yellow,
   },
-})
-
-const data = [{
-  title: 'Hello',
-  numberOfCards: 3
-}, {
-  title: 'Bye',
-  numberOfCards: 2
-}];
+});
 
 const Decks = ({decks, onPress}) => {
   return (
     <View style={[style.container]}>
       <Title>Decks</Title>
+      {decks.length === 0 && <Empty/> }
       <DeckList decks={decks} onPress={onPress} />
     </View>
-  )
+  );
 };
 
 const mapDispatchToProps = (dispatch, { navigation }) => {
