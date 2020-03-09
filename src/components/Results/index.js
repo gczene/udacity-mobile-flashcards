@@ -28,7 +28,7 @@ export default ({route, navigation}) => {
       }
     )
   };
-  
+
   return (
     <View style={style.container}>
       <View>

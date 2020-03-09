@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
-
+import { pink, dark } from '../../../colors'
 
 const btnStyle = StyleSheet.create({
   btn: {
@@ -14,22 +14,28 @@ const btnStyle = StyleSheet.create({
     fontSize: 24,
   },
   primary: {
-    backgroundColor: '#FF6A70',
+    backgroundColor: pink,
   },
   secondary: {
-    borderColor: '#2F1627',
+    borderColor: dark,
     borderWidth: 1,
   },
+  disabled: {
+    color: 'lightgrey',
+  }
 });
 
-export default ({text = 'no text passed', secondary, style = {}, children, onPress = () => {}}) => {
+export default ({text = 'no text passed', secondary, disabled = false, style = {}, children, onPress = () => {}}) => {
   const predefinedStyle = secondary ? btnStyle.secondary : btnStyle.primary;
 
-  const styles = [btnStyle.btn, predefinedStyle, style];
-
+  const wrapperStyles = [btnStyle.btn, predefinedStyle, style];
+  const textStyles = [btnStyle.text];
+  if (disabled) {
+    textStyles.push(btnStyle.disabled);
+  }
   return (
-    <TouchableOpacity style={styles} onPress={onPress}>
-      <Text style={btnStyle.text}>{children}</Text>
+    <TouchableOpacity style={wrapperStyles} disabled={disabled} onPress={onPress}>
+      <Text style={textStyles}>{children}</Text>
     </TouchableOpacity>
   );
 }

@@ -19,7 +19,8 @@ const data = [{
 }, {
   title: 'Bye',
   numberOfCards: 2
-}]
+}];
+
 const Decks = ({decks, onPress}) => {
   return (
     <View style={[style.container]}>
@@ -36,7 +37,6 @@ const mapDispatchToProps = (dispatch, { navigation }) => {
 };
 
 const mapStateToProps = ({ decks }) => {
-
   return {
     decks: Object.keys(decks).map(id => decks[id])
   };

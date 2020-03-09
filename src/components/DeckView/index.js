@@ -42,7 +42,7 @@ export default ({route, navigation}) => {
       <Text style={style.subTitle}>{questions.length} cards</Text>
       <View>
         <UdaButton>Add card</UdaButton>
-        <UdaButton onPress={startQuiz} secondary>Start Quiz</UdaButton>
+        <UdaButton onPress={startQuiz} disabled={questions.length === 0} secondary>Start Quiz</UdaButton>
       </View>
     </View>
   );
