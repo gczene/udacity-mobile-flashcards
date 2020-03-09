@@ -9,6 +9,7 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    padding: 15,
     backgroundColor: yellow,
   },
 })

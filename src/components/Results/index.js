@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Title from '../Title';
 import UdaButton from '../form/UdaButton';
+import { yellow } from "../../colors";
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: yellow,
   },
   results: {
     paddingVertical: 20,

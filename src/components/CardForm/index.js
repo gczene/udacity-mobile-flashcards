@@ -9,9 +9,10 @@ const mapStateToProps = (state, { navigation, route }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { navigation }) => {
   return {
-    onSubmit: (data) => dispatch(addQuestion(data))
+    onSubmit: (data) => dispatch(addQuestion(data)),
+    navigation,
   };
 };
 

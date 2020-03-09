@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import UdaButton from '../form/UdaButton';
 import Title from '../Title';
+import { yellow } from "../../colors";
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: yellow,
   },
   title: {
     fontSize: 30,
@@ -19,10 +21,7 @@ const style = StyleSheet.create({
     fontSize: 24,
   },
 })
-const initialCard = {
-  title: '',
-  questions: []
-}
+
 export default ({route, navigation, deck}) => {
 
   const { title, questions } = deck;

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { UdaButton } from '../form';
 import Title from '../Title';
-import { pink } from '../../colors';
+import { pink, yellow } from '../../colors';
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    backgroundColor: yellow,
   },
   currentScreenWrapper: {
     alignItems: 'flex-end',
@@ -32,7 +33,6 @@ export default ({ route, navigation}) => {
   const { deck, score, currentIndex } = route.params;
 
   useEffect(() => {
-    console.log('componentDidMount')
     navigation.setOptions({ title: deck.title})
   }, [deck.title] )
 

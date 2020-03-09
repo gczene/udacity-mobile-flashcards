@@ -11,7 +11,7 @@ const style = StyleSheet.create({
     flex: 1,
     width: '100%',
     backgroundColor: yellow,
-    paddingHorizontal: 15,
+    padding: 15,
   },
   label: {
     marginVertical: 10,
@@ -22,7 +22,7 @@ const style = StyleSheet.create({
   }
 })
 
-export default ({question: defaultQuestion, answer: defaultAnswer, onSubmit = () => {}, title = ''}) => {
+export default ({ question: defaultQuestion, answer: defaultAnswer, onSubmit = () => {}, title = '', navigation }) => {
 
   const [ question, setQuestion ] = useState(defaultQuestion || '');
   const [ answer, setAnswer ] = useState(defaultAnswer || '');
@@ -34,14 +34,18 @@ export default ({question: defaultQuestion, answer: defaultAnswer, onSubmit = ()
     if (q.length <= 3 || a.length <= 3) {
       setHasError(true);
     } else {
-      setHasError(false)
+      setHasError(false);
+      setAnswer('');
+      setQuestion('')
       onSubmit({
         title,
         question: q,
         answer: a,
       });
+      navigation.goBack();
     }
-  }
+  };
+
   return (
     <KeyboardAvoidingView style={style.container} behavior={Platform.OS === "ios" ? "padding" : null}>
       <SafeAreaView>
