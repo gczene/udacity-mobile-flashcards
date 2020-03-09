@@ -36,12 +36,18 @@ export default ({route, navigation}) => {
       }
     )
   }
+
+  const navigateToCardForm = () => {
+    navigation.navigate('AddCard', {
+      title
+    })
+  }
   return (
     <View style={style.container}>
       <Title>{title}</Title>
       <Text style={style.subTitle}>{questions.length} cards</Text>
       <View>
-        <UdaButton>Add card</UdaButton>
+        <UdaButton onPress={navigateToCardForm}>Add card</UdaButton>
         <UdaButton onPress={startQuiz} disabled={questions.length === 0} secondary>Start Quiz</UdaButton>
       </View>
     </View>

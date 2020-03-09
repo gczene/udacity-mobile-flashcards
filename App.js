@@ -7,6 +7,7 @@ import { pink, dark } from './src/colors';
 import { Provider } from 'react-redux';
 import store from './src/store';
 import CardView from './src/components/CardView';
+import CardForm from './src/components/CardForm';
 import Constants from 'expo-constants';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
@@ -27,6 +28,7 @@ const Home = () => {
       <Stack.Screen name="Home" component={Decks} options={{ title: 'Overview' }} />
       <Stack.Screen name="DeckView" component={DeckView} />
       <Stack.Screen name="CardView" component={CardView} />
+      <Stack.Screen name="AddCard" component={CardForm} options={{title: 'Add Card'}} />
       <Stack.Screen
         name="Results"
         component={Results}

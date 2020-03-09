@@ -1,5 +1,4 @@
-import { ADD_DECK } from "../actions";
-
+import { ADD_DECK, ADD_CARD } from "../actions";
 
 const initialState = {
   React: {
@@ -29,7 +28,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_DECK:
-      console.log(action);
       return {
         ...state,
         [action.title]: {
@@ -37,6 +35,22 @@ export default (state = initialState, action) => {
           questions: []
         }
       }
+    case ADD_CARD:
+      const newState =  {
+        ...state,
+        [action.title]: {
+          ...state[action.title],
+          questions: [
+            ...state[action.title].questions,
+            {
+              question: action.question,
+              answer: action.answer,
+            }
+          ]
+        }
+      }
+      console.log(newState);
+      return newState;
     default:
       return state;
   }
