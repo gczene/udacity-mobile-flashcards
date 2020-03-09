@@ -32,7 +32,7 @@ const Decks = ({decks, onPress}) => {
 
 const mapDispatchToProps = (dispatch, { navigation }) => {
   return {
-    onPress: (deck) => navigation.navigate('DeckView', { deck })
+    onPress: (deck) => navigation.navigate('DeckView', { id: deck.title })
   };
 };
 
