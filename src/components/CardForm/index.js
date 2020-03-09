@@ -4,11 +4,13 @@ import Title from '../Title';
 import Input from '../form/Input';
 import UdaButton from '../form/UdaButton';
 import ErrorMessage from '../form/ErrorMessage';
+import { yellow } from '../../colors';
 
 const style = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    backgroundColor: yellow,
   },
   label: {
     marginVertical: 10,

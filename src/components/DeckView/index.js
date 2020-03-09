@@ -23,16 +23,26 @@ const initialCard = {
   title: '',
   questions: []
 }
-export default ({route}) => {
+export default ({route, navigation}) => {
   console.log('route', route)
   const { title, questions } = route.params.deck;
+  const startQuiz = () => {
+    navigation.navigate(
+      'CardView',
+      {
+        deck: route.params.deck,
+        currentIndex: 0,
+        score: 0,
+      }
+    )
+  }
   return (
     <View style={style.container}>
       <Title>{title}</Title>
       <Text style={style.subTitle}>{questions.length} cards</Text>
       <View>
         <UdaButton>Add card</UdaButton>
-        <UdaButton secondary>Start Quiz</UdaButton>
+        <UdaButton onPress={startQuiz} secondary>Start Quiz</UdaButton>
       </View>
     </View>
   );

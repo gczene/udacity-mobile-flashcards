@@ -1,3 +1,5 @@
+import { ADD_DECK } from "../actions";
+
 
 const initialState = {
   React: {
@@ -23,6 +25,20 @@ const initialState = {
     ]
   }
 }
-export default (state = initialState) => {
-  return state;
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_DECK:
+      console.log(action);
+      return {
+        ...state,
+        [action.title]: {
+          title: action.title,
+          questions: []
+        }
+      }
+    default:
+      return state;
+  }
+
 }

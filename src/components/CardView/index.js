@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { UdaButton } from '../form';
 import Title from '../Title';
@@ -8,6 +8,11 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between'
+  },
+  currentScreenWrapper: {
+    alignItems: 'flex-end',
+    paddingRight: 25,
+    paddingTop: 15,
   },
   textWrapper: {
     alignItems: 'center',
@@ -22,28 +27,51 @@ const style = StyleSheet.create({
   }
 });
 
-export default () => {
+export default ({ route, navigation}) => {
+
+  const { deck, score, currentIndex } = route.params;
+
+  useEffect(() => {
+    console.log('componentDidMount')
+    navigation.setOptions({ title: deck.title})
+  }, [deck.title] )
 
   const [ isAnswerDisplayed, setIsAnswerDisplayed ] = useState(false);
 
+  const goToNext = (isCorrect) => {
+    const newScore = score + (isCorrect ? 1 : 0)
+    if (currentIndex < deck.questions.length -1) {
+      navigation.setParams({
+        score: newScore,
+        currentIndex: currentIndex + 1,
+        deck,
+      })
+    } else {
+      navigation.navigate('Results', {
+        deck,
+        score: newScore,
+      });
+    }
+  }
+
   return (
     <View style={style.container}>
-      <View><Text>2 / 2</Text></View>
+      <View style={style.currentScreenWrapper}><Text>{currentIndex} / {deck.questions.length}</Text></View>
       <View style={style.textWrapper}>
         <Title>
-          {isAnswerDisplayed && 'ANSWER'}
-          {!isAnswerDisplayed && 'QUESTION QUESTION QUESTION QUESTION QUESTION QUESTION QUESTION '}
+          {isAnswerDisplayed && deck.questions[currentIndex].answer}
+          {!isAnswerDisplayed && deck.questions[currentIndex].question}
         </Title>
         <TouchableOpacity onPress={() => setIsAnswerDisplayed(!isAnswerDisplayed)}>
           <Text style={style.subTitle}>
-            {isAnswerDisplayed && 'QUESTION'}
+            {isAnswerDisplayed && 'Question'}
             {!isAnswerDisplayed && 'Answer'}
           </Text>
         </TouchableOpacity>
       </View>
       <View style={style.btnWrapper}>
-        <UdaButton>Correct</UdaButton>
-        <UdaButton secondary>Incorrect</UdaButton>
+        <UdaButton onPress={() => goToNext(true)}>Correct</UdaButton>
+        <UdaButton onPress={() => goToNext(false)} secondary>Incorrect</UdaButton>
       </View>
     </View>
   )

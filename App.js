@@ -6,12 +6,12 @@ import Decks from './src/components/Decks';
 import { pink, dark } from './src/colors';
 import { Provider } from 'react-redux';
 import store from './src/store';
-
-// import DeckView from './src/components/CardView';
+import CardView from './src/components/CardView';
 import Constants from 'expo-constants';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Results from './src/components/Results';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -26,6 +26,16 @@ const Home = () => {
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Decks} options={{ title: 'Overview' }} />
       <Stack.Screen name="DeckView" component={DeckView} />
+      <Stack.Screen name="CardView" component={CardView} />
+      <Stack.Screen
+        name="Results"
+        component={Results}
+        options={({navigation}) => ({
+          title: 'hello',
+          headerLeft: () => (<HeaderBackButton label={'Home'} onPress={() => navigation.navigate('Home')} />)
+        })}
+      />
+
     </Stack.Navigator>
   )
 }
@@ -42,9 +52,9 @@ export default class App extends Component {
         <Provider store={store}>
           <Tab.Navigator
             tabBarOptions={{
-            activeTintColor: pink,
-            inactiveTintColor: dark,
-          }}>
+              activeTintColor: pink,
+              inactiveTintColor: dark,
+            }}>
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="New Deck" component={DeckForm} />
           </Tab.Navigator>
