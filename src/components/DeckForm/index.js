@@ -8,7 +8,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 const mapStateToProps = (state, { navigation }) => {
-  console.log('dadas', navigation)
   return {
     navigation,
   };

@@ -29,7 +29,7 @@ export default ({onSubmit = () => {}, navigation}) => {
       setHasError(false);
       onSubmit(title);
       setTitle('');
-      navigation.navigate('Home')
+      navigation.navigate('DeckView', {deck: { title, questions: [] }});
     }
     Keyboard.dismiss();
   }

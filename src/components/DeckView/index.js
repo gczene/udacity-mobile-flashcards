@@ -24,7 +24,7 @@ const initialCard = {
   questions: []
 }
 export default ({route, navigation}) => {
-  console.log('route', route)
+
   const { title, questions } = route.params.deck;
   const startQuiz = () => {
     navigation.navigate(
