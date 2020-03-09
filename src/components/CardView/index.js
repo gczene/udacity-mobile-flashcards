@@ -56,7 +56,7 @@ export default ({ route, navigation}) => {
 
   return (
     <View style={style.container}>
-      <View style={style.currentScreenWrapper}><Text>{currentIndex} / {deck.questions.length}</Text></View>
+      <View style={style.currentScreenWrapper}><Text>{currentIndex + 1} / {deck.questions.length}</Text></View>
       <View style={style.textWrapper}>
         <Title>
           {isAnswerDisplayed && deck.questions[currentIndex].answer}
