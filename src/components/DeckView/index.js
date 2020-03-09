@@ -1,5 +1,6 @@
 import DeckView from "./DeckView";
 import {connect} from "react-redux";
+import {deleteDeck} from "../../actions";
 
 const mapStateToProps = (state, { route }) => {
   const id = route.params.id;
@@ -8,4 +9,10 @@ const mapStateToProps = (state, { route }) => {
   };
 };
 
-export default connect(mapStateToProps)(DeckView)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteDeck: (id) => dispatch(deleteDeck(id))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DeckView)

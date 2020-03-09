@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity, Alert } from 'react-native';
 import UdaButton from '../form/UdaButton';
 import Title from '../Title';
 import { yellow } from "../../colors";
@@ -22,9 +22,9 @@ const style = StyleSheet.create({
   },
 })
 
-export default ({route, navigation, deck}) => {
+export default ({navigation, deck = {}, deleteDeck = () => {}}) => {
 
-  const { title, questions } = deck;
+  const { title = '', questions = [] } = deck;
   const startQuiz = () => {
     navigation.navigate(
       'CardView',
@@ -40,7 +40,25 @@ export default ({route, navigation, deck}) => {
     navigation.navigate('AddCard', {
       title
     })
-  }
+  };
+
+  const remove = () => {
+    deleteDeck(deck.title);
+    navigation.navigate('Home');
+    ;
+  };
+
+  const confirm = () => {
+    Alert.alert(
+      'Sure?',
+      'Really?',
+      [
+        {text: 'NO', style: 'cancel'},
+        {text: 'YES', onPress: remove},
+      ]
+    );
+  };
+
   return (
     <View style={style.container}>
       <Title>{title}</Title>
@@ -48,6 +66,7 @@ export default ({route, navigation, deck}) => {
       <View>
         <UdaButton onPress={navigateToCardForm}>Add card</UdaButton>
         <UdaButton onPress={startQuiz} disabled={questions.length === 0} secondary>Start Quiz</UdaButton>
+        <UdaButton onPress={confirm}>Delete Deck</UdaButton>
       </View>
     </View>
   );

@@ -1,4 +1,4 @@
-import { ADD_DECK, ADD_CARD } from "../actions";
+import { ADD_DECK, ADD_CARD, DELETE_DECK } from "../actions";
 
 const initialState = {
   React: {
@@ -35,6 +35,10 @@ export default (state = initialState, action) => {
           questions: []
         }
       }
+    case DELETE_DECK:
+      const copy = {...state};
+      delete copy[action.id];
+      return {...copy};
     case ADD_CARD:
       const newState =  {
         ...state,
@@ -49,7 +53,6 @@ export default (state = initialState, action) => {
           ]
         }
       }
-      console.log(newState);
       return newState;
     default:
       return state;
