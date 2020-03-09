@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
 import DeckForm from './src/components/DeckForm';
 import DeckView from './src/components/DeckView';
 import Decks from './src/components/Decks';
@@ -33,7 +32,7 @@ const Home = () => {
         name="Results"
         component={Results}
         options={({navigation}) => ({
-          title: 'hello',
+          title: 'Completed',
           headerLeft: () => (<HeaderBackButton label={'Home'} onPress={() => navigation.navigate('Home')} />)
         })}
       />
@@ -42,11 +41,6 @@ const Home = () => {
   )
 }
 
-/**
- <Stack.Navigator>
- <Stack.Screen name="Home" component={Decks} />
- </Stack.Navigator>
- */
 export default class App extends Component {
   render() {
     return (
@@ -58,7 +52,6 @@ export default class App extends Component {
                 activeTintColor: 'white',
                 inactiveTintColor: '#FEC94B',
                 tabStyle: {
-                  // justifyContent: 'center',
                 },
                 labelStyle: {
                   // fontSize: 20,

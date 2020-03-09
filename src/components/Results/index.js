@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Title from '../Title';
 import UdaButton from '../form/UdaButton';
 import { yellow } from "../../colors";
+import { clearLocalNotification, setLocalNotification } from '../../utils/notifications';
 
 const style = StyleSheet.create({
   container: {
@@ -19,6 +20,11 @@ const style = StyleSheet.create({
 
 export default ({route, navigation}) => {
   const { deck, score } = route.params;
+
+  useEffect(() => {
+    clearLocalNotification()
+      .then(setLocalNotification);
+  }, [])
 
   const restartQuiz = () => {
     navigation.navigate(

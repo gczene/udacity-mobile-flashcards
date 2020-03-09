@@ -6,7 +6,7 @@ const style = StyleSheet.create({
   container: {
     paddingTop: 40,
   }
-})
+});
 export default () => {
   return (
     <View style={style.container}>

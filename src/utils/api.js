@@ -3,7 +3,6 @@ import { AsyncStorage } from 'react-native';
 const DECK_KEY = '@mobileFlashCards'
 export default {
   getDecks: async function () {
-    // AsyncStorage.clear()
     return await AsyncStorage.getItem(DECK_KEY)
       .then((data) => {
         if (data !== null) {
